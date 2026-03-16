@@ -1,6 +1,7 @@
 name: deploy containers
 
-on: push
+on:
+  push:
 
 jobs:
   call-workflow:
