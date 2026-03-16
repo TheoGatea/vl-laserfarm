@@ -1,0 +1,27 @@
+FROM python:3.12-slim
+
+ARG NOTEBOOK_NAME
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+COPY docker/requirements.txt /app/requirements.txt
+
+COPY ../${NOTEBOOK_NAME}_requirements.txt /app/requirements_notebook.txt
+
+RUN pip install -r /app/requirements.txt \
+    && pip install -r /app/requirements_notebook.txt
+
+COPY docker/run_from_json.py /app/run_from_json.py
+# COPY notebook.ipynb /app/notebook.ipynb
+COPY ../${NOTEBOOK_NAME}.ipynb /app/notebook.ipynb
+
+# Defaults (Batch overrides these with containerOverrides.environment)
+ENV JOB_ID="" \
+    NOTEBOOK_PARAMS="{}" \
+    NOTEBOOK_OUT="/app/out/run.executed.ipynb"
+
+ENTRYPOINT ["python", "/app/run_from_json.py"]

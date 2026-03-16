@@ -1,0 +1,7 @@
+name: deploy containers
+
+on: push
+
+jobs:
+  call-workflow:
+    uses: 14655837/Notebook2REST_project/.github/workflows/containerise.yaml@main

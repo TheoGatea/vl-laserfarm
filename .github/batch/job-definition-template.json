@@ -1,0 +1,23 @@
+{
+  "containerProperties": {
+    "image": "831680222249.dkr.ecr.eu-west-1.amazonaws.com/notebook2rest:PLACEHOLDER",
+    "jobRoleArn": "arn:aws:iam::831680222249:role/Notebook2REST-BatchJob-Role",
+    "executionRoleArn": "arn:aws:iam::831680222249:role/AWS-Batch-Default-Execution-Role",
+    "resourceRequirements": [
+      {"value": "1.0", "type": "VCPU"},
+      {"value": "2048", "type": "MEMORY"}
+    ],
+    "networkConfiguration": {
+      "assignPublicIp": "ENABLED"
+    },
+    "fargatePlatformConfiguration": {
+      "platformVersion": "LATEST"
+    },
+    "runtimePlatform": {
+      "operatingSystemFamily": "LINUX",
+      "cpuArchitecture": "X86_64"
+    }
+  },
+  "type": "container",
+  "platformCapabilities": ["FARGATE"]
+}
