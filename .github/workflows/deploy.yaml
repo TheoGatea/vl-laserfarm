@@ -3,6 +3,10 @@ name: deploy containers
 on:
   push:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   call-workflow:
     uses: 14655837/Notebook2REST_project/.github/workflows/containerise.yaml@main
