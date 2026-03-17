@@ -8,21 +8,6 @@ permissions:
   contents: read
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout current repo
-        uses: actions/checkout@v4
-
-      - name: Clone external repository
-        run: |
-          git clone https://github.com/14655837/Notebook2REST_project.git
-
-      - name: Copy docker directory to root
-        run: |
-          mkdir docker
-          cp -r Notebook2REST_project/docker ./docker
-
   call-workflow:
     uses: 14655837/Notebook2REST_project/.github/workflows/containerise.yaml@main
+    secrets: inherit
