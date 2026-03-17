@@ -1,3 +1,0 @@
-papermill[s3]
-ipykernel
-nbformat
